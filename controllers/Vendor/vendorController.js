@@ -28,7 +28,7 @@ exports.getVendors = async (req,res) => {
         if(req.query.name){
             condition["name"] = new RegExp(req.query.name,"i")
         }
-        const vendor = await Vendor.find(condition)
+        const vendor = await Vendor.find(condition).sort({createdAt:-1})
         res.status(200).json({message:"All vendors !",data:vendor})
 
     } catch (error) {

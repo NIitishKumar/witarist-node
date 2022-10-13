@@ -15,7 +15,7 @@ exports.createResource = async (req,res) => {
 
 exports.getResources = async (req,res) => {
     try {
-        const data = await Resource.find({})
+        const data = await Resource.find({}).sort({createdAt:-1})
         res.status(200).json({message:"Get resources !",data})
     } catch (error) {
         res.status(400).json({message:"Something went wrong !",error})
